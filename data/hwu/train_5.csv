@@ -1,0 +1,6 @@
+text,category
+remind me about my alarms today,alarm_query
+what alarms are set,alarm_query
+what's the alarm situation for tomorrow,alarm_query
+at what time have you set alarm for me,alarm_query
+show me the alarms i set,alarm_query

@@ -1,0 +1,6 @@
+text,category
+do i have alarms set before six in the morning,alarm_query
+what alarms do i all have set,alarm_query
+can you tell me about the alarm called bed,alarm_query
+olly find any alarms i have set for today,alarm_query
+what alarms are upcoming,alarm_query

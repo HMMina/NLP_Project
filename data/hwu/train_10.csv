@@ -1,0 +1,5 @@
+"text","category"
+"remind me about my alarms today","alarm_query"
+"list my different alarm","alarm_query"
+"what alarms are set","alarm_query"
+"list alarms","alarm_query"

@@ -1,0 +1,8 @@
+"text","category"
+"tell me time of alarm you set","alarm_query"
+"list all of my alarms","alarm_query"
+"alarm settings","alarm_query"
+"what alarms are set for today","alarm_query"
+"please see see for me the alarms that you have set sunday morning","alarm_query"
+"tell me when the next alarms are for","alarm_query"
+"please tell me what alarms are on","alarm_query"

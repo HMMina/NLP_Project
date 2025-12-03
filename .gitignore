@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.ipynb_checkpoints/
+
+# Scala/Java
+*.class
+*.log
+target/
+.bsp/
+.idea/
+
+
