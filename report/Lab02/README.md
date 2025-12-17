@@ -122,10 +122,7 @@ sbt run
 
 ### Cấu Trúc Kết Quả Enhanced
 ```
-log/
-├── pipeline_YYYYMMDD_HHMMSS.log    # Enhanced log với performance metrics
-results/
-├── lab17_pipeline_output.txt       # Kết quả với similarity analysis
+report\Lab02\lab17_pipeline_output.txt      # Kết quả với similarity analysis
 ```
 
 ### Enhanced Log File Content (Dual Pipeline)
@@ -244,7 +241,7 @@ The stove simula...
 ### Kiểm Tra Kết Quả
 ```bash
 # Kiểm tra file output đã được tạo
-ls results/lab17_pipeline_output.txt
+ls report\Lab02\lab17_pipeline_output.txt
 ```
 
 ### Phân Tích Vector Đặc Trưng
