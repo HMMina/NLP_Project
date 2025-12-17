@@ -1,14 +1,14 @@
 # Báo Cáo Tổng Hợp Lab 06: Sequence Modeling với RNNs
 
 ## 📋 Mục Lục
-1. [Part 1: Tìm hiểu về RNNs và Phân loại Token](#part-1-tìm-hiểu-về-rnns-và-phân-loại-token-lab6ipynb)
+1. [Part 1: Introduction về PyTorch](#part-1-introduction-về-pytorch-notebooklab6ipynb)
 2. [Part 2: RNNs cho Phân loại Văn bản](#part-2-rnns-cho-phân-loại-văn-bản-lab6_rnns_text_classificationipynb)
 3. [Part 3: Part-of-Speech Tagging với RNN](#part-3-part-of-speech-tagging-với-rnn-lab6_rnn_for_pos_taggingipynb)
 4. [Part 4: Named Entity Recognition với RNN](#part-4-named-entity-recognition-với-rnn-lab6_rnn_for_neripynb)
 
 ---
 
-## Part 1: Tìm hiểu về RNNs và Phân loại Token (lab6.ipynb)
+## Part 1: Introduction về PyTorch (lab6.ipynb)
 ### 1. Giải Thích Các Bước Triển Khai
 #### Task 1: Làm quen với Tensor
 - **Mục đích**: Hiểu cách tạo và thao tác với cấu trúc dữ liệu cơ bản của PyTorch.
@@ -31,7 +31,7 @@
 
 ### 2. Hướng Dẫn Thực Thi Mã
 1. **Cài đặt**: `pip install torch numpy`
-2. **Chạy**: Mở `lab6.ipynb` và chạy tuần tự các cell.
+2. **Chạy**: Mở `notebook\Lab06\lab6.ipynb` và chạy tuần tự các cell.
 
 ### 3. Phân Tích Kết Quả
 - Đã thực hiện thành công các thao tác tensor và tính toán đạo hàm.
