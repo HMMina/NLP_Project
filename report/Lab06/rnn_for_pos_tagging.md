@@ -64,18 +64,19 @@ pip install torch numpy
 
 ### 2.2 Cấu Trúc Thư Mục
 ```
-Lab06/
-├── lab6_rnn_for_pos_tagging.ipynb
-├── rnn_for_pos_tagging.md
-└── ../UD_English-EWT/
-    ├── en_ewt-ud-train.conllu
-    └── en_ewt-ud-dev.conllu
+ notebook/
+    Lab06/
+       lab6_rnn_for_pos_tagging.ipynb
+ data/
+    UD_English-EWT/
+       en_ewt-ud-train.conllu
+       en_ewt-ud-dev.conllu
 ```
 
 ### 2.3 Cách Chạy
 1. **Mở Jupyter Notebook**:
    ```bash
-   jupyter notebook lab6_rnn_for_pos_tagging.ipynb
+   jupyter notebook notebook/Lab06/lab6_rnn_for_pos_tagging.ipynb
    ```
 2. **Chạy tuần tự các cell**:
    - Cell 1-2: Import và setup.

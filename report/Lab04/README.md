@@ -17,25 +17,27 @@
 ---
 ## 📁 Cấu trúc thư mục
 ```
-Lab04/
-
-├── image.png                                   # Hình ảnh trực quan hóa của Lab3.ipynb
-├── image-1.png                                 # Hình ảnh trực quan hóa của Lab3.ipynb
-├── Lab3.ipynb                                  # Notebook trực quan hóa embeddings
-├── README.md                                    # File báo cáo
-├── src/
-│   └── representations/
-│       └── word_embedder.py                    # Class WordEmbedder
-├── test/
-│   ├── lab4_test.py                            # Test GloVe pre-trained model
-│   ├── lab4_spark_word2vec_demo.py             # Demo Spark Word2Vec
-│   └── lab4_embedding_training_demo.py         # Train Word2Vec từ scratch
-└── results/
-   └── word2vec_ewt.model                      # Model đã huấn luyện
+ src/
+    Lab04/
+       src/
+          representations/
+             word_embedder.py                    # Class WordEmbedder
+ test/
+    Lab04/
+       test/
+          lab4_test.py                            # Test GloVe pre-trained model
+          lab4_spark_word2vec_demo.py             # Demo Spark Word2Vec
+          lab4_embedding_training_demo.py         # Train Word2Vec từ scratch
+ notebook/
+    Lab04/
+       Lab3.ipynb                                  # Notebook trực quan hóa embeddings
+ data/
+    UD_English-EWT/                                 # Dữ liệu UD English EWT
+    c4-train.00000-of-01024-30K.json                # Dữ liệu C4
 ```
 
 ---
-## 🚀 Hướng dẫn cài đặt
+## Hướng dẫn cài đặt
 ### 1. Yêu cầu hệ thống
 - Python 3.7+
 - Java 8+ (cho PySpark)
@@ -44,9 +46,6 @@ Lab04/
 ### 2. Cài đặt thư viện
 
 ```bash
-# Di chuyển vào thư mục Lab04
-cd Lab04
-
 # Cài đặt các thư viện cần thiết
 pip install gensim numpy pandas seaborn scikit-learn
 pip install pyspark
@@ -58,26 +57,26 @@ pip install pyspark
 - `../c4-train.00000-of-01024-30K.json` (C4 dataset)
 
 ---
-## 📝 Hướng dẫn chạy
+## Hướng dẫn chạy
 ### Task 1 & 2: Pre-trained GloVe Model
 Test sử dụng GloVe pre-trained model:
 
 ```bash
-cd test
+cd test/Lab04/test
 python lab4_test.py
 ```
 
 ### Task 3: Huấn luyện Word2Vec từ scratch
 Huấn luyện model mới trên UD English EWT:
 ```bash
-cd test
+cd test/Lab04/test
 python lab4_embedding_training_demo.py
 ```
 
 ### Task 4: Spark Word2Vec trên C4 Dataset
 Huấn luyện Word2Vec với PySpark:
 ```bash
-cd test
+cd test/Lab04/test
 python lab4_spark_word2vec_demo.py
 ```
 
@@ -86,14 +85,14 @@ python lab4_spark_word2vec_demo.py
 Mở và chạy notebook:
 ```bash
 # Mở Jupyter Notebook
-jupyter notebook Lab3.ipynb
+jupyter notebook notebook/Lab04/Lab3.ipynb
 
 # Hoặc mở trong VS Code và chạy từng cell
 ```
 
 ---
 
-## 📈 Kết quả thực thi
+## Kết quả thực thi
 
 ### Task 1 + 2 (lab4_test.py)
 ```
@@ -189,18 +188,18 @@ Top 5 words similar to 'computer':
 ![alt text](image-1.png)
 
 ---
-## 💡 Phân tích Kết Quả
-### 1. 📊 Task 1 & 2: Phân tích GloVe Pre-trained Model
+## Phân tích Kết Quả
+### 1. Task 1 & 2: Phân tích GloVe Pre-trained Model
 #### 1.1. Vector Representation của 'king'
 **Kết quả:**
 ```python
 Vector 50 chiều: [0.50451, 0.68607, -0.59517, ..., -0.51042]
 ```
 **Nhận xét:**
-- ✅ Mỗi từ được biểu diễn bởi **50 số thực** (50-dimensional vector)
-- ✅ Các giá trị trong khoảng **-2.2 đến +2.0**, cho thấy normalization tốt
-- ✅ Vector này encode **semantic meaning** của từ "king"
-- 📝 **Ý nghĩa:** Các từ có nghĩa gần nhau sẽ có vector gần nhau trong không gian 50 chiều
+- Mỗi từ được biểu diễn bởi **50 số thực** (50-dimensional vector)
+- Các giá trị trong khoảng **-2.2 đến +2.0**, cho thấy normalization tốt
+- Vector này encode **semantic meaning** của từ "king"
+- **Ý nghĩa:** Các từ có nghĩa gần nhau sẽ có vector gần nhau trong không gian 50 chiều
 
 #### 1.2. Độ Tương Đồng Giữa Các Từ
 **Kết quả:**
@@ -211,20 +210,20 @@ king ↔ man:   0.5309 (53.09% tương đồng)
 
 **Phân tích chi tiết:**
 **Cặp "king - queen" (0.7839):**
-- ✅ **Điểm cao** (>75%) chứng tỏ mô hình hiểu rất tốt mối quan hệ
-- 🔍 **Lý do:** Cả hai từ:
+- **Điểm cao** (>75%) chứng tỏ mô hình hiểu rất tốt mối quan hệ
+- **Lý do:** Cả hai từ:
   - Thuộc cùng semantic field: **royalty** (hoàng gia)
   - Xuất hiện trong context tương tự: "throne", "crown", "kingdom"
   - Có chung các đặc trưng: quyền lực, địa vị cao
-- 📊 **So sánh:** Score này cao hơn nhiều từ đồng nghĩa thông thường (~0.6-0.7)
+- **So sánh:** Score này cao hơn nhiều từ đồng nghĩa thông thường (~0.6-0.7)
 
 **Cặp "king - man" (0.5309):**
-- ⚠️ **Điểm trung bình** (50-55%) cho thấy có liên quan nhưng không gần nghĩa
-- 🔍 **Lý do:** 
+- **Điểm trung bình** (50-55%) cho thấy có liên quan nhưng không gần nghĩa
+- **Lý do:** 
   - "king" có thêm features về **quyền lực, địa vị**
   - "man" là từ generic về **giới tính**
   - Context khác nhau: "king" với "throne", "man" với "person", "human"
-- 📝 **Kết luận:** Thấp hơn king-queen là hợp lý vì ý nghĩa khác biệt rõ
+- **Kết luận:** Thấp hơn king-queen là hợp lý vì ý nghĩa khác biệt rõ
 
 #### 1.3. Top 10 Từ Tương Tự với 'computer'
 **Kết quả đầy đủ:**
@@ -244,33 +243,33 @@ king ↔ man:   0.5309 (53.09% tương đồng)
 **Phân tích theo nhóm:**
 **Nhóm 1: Biến thể hình thái (Score >0.91)**
 - `computers` (0.9165) - Dạng số nhiều
-- 📝 **Giải thích:** Cùng root word, xuất hiện trong context gần giống hệt nhau
-- ✅ **Đánh giá:** Perfect - Model học được morphology
+- **Giải thích:** Cùng root word, xuất hiện trong context gần giống hệt nhau
+- **Đánh giá:** Perfect - Model học được morphology
 
 **Nhóm 2: Từ liên quan trực tiếp (Score 0.81-0.88)**
 - `software` (0.8815) - Phần mềm máy tính
 - `technology` (0.8526) - Công nghệ
 - `electronic` (0.8126) - Điện tử
-- 📝 **Giải thích:** Các từ này thường **đi kèm** với computer trong text
-- ✅ **Đánh giá:** Excellent - Semantic relationship rõ ràng
+- **Giải thích:** Các từ này thường **đi kèm** với computer trong text
+- **Đánh giá:** Excellent - Semantic relationship rõ ràng
 
 **Nhóm 3: Từ cùng domain (Score 0.79-0.80)**
 - `internet`, `computing`, `devices`, `digital`, `applications`
-- 📝 **Giải thích:** Thuộc cùng **technology domain**
-- ✅ **Đánh giá:** Very Good - Contextual similarity
+- **Giải thích:** Thuộc cùng **technology domain**
+- **Đánh giá:** Very Good - Contextual similarity
 
 **Nhóm 4: Từ đồng nghĩa (Score 0.78)**
 - `pc` (0.7883) - Personal Computer
-- 📝 **Giải thích:** Synonym trực tiếp nhưng score không cao nhất vì:
+- **Giải thích:** Synonym trực tiếp nhưng score không cao nhất vì:
   - "pc" informal hơn "computer"
   - Usage context khác nhau (pc → home, computer → general)
-- ✅ **Đánh giá:** Good - Register differences được capture
+- **Đánh giá:** Good - Register differences được capture
 
 **Tổng kết:**
-- 🎯 **10/10 từ đều chính xác** và có semantic relationship với "computer"
-- 🎯 **Điểm cao** (>0.78) cho thấy confidence tốt
-- 🎯 **Đa dạng** relationship types: morphology, synonymy, domain similarity
-- ✅ **Kết luận:** GloVe model **xuất sắc** cho từ phổ biến
+- **10/10 từ đều chính xác** và có semantic relationship với "computer"
+- **Điểm cao** (>0.78) cho thấy confidence tốt
+- **Đa dạng** relationship types: morphology, synonymy, domain similarity
+- **Kết luận:** GloVe model **xuất sắc** cho từ phổ biến
 
 #### 1.4. Document Embedding
 **Input:** "The queen rules the country."
@@ -282,16 +281,16 @@ king ↔ man:   0.5309 (53.09% tương đồng)
 **Phương pháp:** Average pooling của word vectors
 **Phân tích:**
 **Ưu điểm:**
-- ✅ **Đơn giản**: Dễ implement, chỉ cần average
-- ✅ **Nhanh**: O(n) complexity với n là số từ
-- ✅ **Ổn định**: Không cần training thêm
-- ✅ **General meaning**: Capture được ý nghĩa tổng thể
+- **Đơn giản**: Dễ implement, chỉ cần average
+- **Nhanh**: O(n) complexity với n là số từ
+- **Ổn định**: Không cần training thêm
+- **General meaning**: Capture được ý nghĩa tổng thể
 
 **Nhược điểm:**
-- ❌ **Mất word order**: "queen rules country" = "country rules queen"
-- ❌ **Stop words**: "the", "a" làm loãng semantic content
-- ❌ **No compositionality**: Không hiểu cấu trúc ngữ pháp
-- ❌ **Equal weights**: Tất cả từ đều quan trọng như nhau
+- **Mất word order**: "queen rules country" = "country rules queen"
+- **Stop words**: "the", "a" làm loãng semantic content
+- **No compositionality**: Không hiểu cấu trúc ngữ pháp
+- **Equal weights**: Tất cả từ đều quan trọng như nhau
 
 **Cải tiến có thể:**
 ```python
@@ -307,7 +306,7 @@ doc_vec = sentence_transformer.encode(text)
 ```
 ---
 
-### 2. 📊 Task 3: Phân tích Custom Word2Vec trên UD Dataset
+### 2. Task 3: Phân tích Custom Word2Vec trên UD Dataset
 **Thông tin huấn luyện:**
 ```
 Corpus: 14,227 câu 
@@ -327,9 +326,9 @@ raise          0.9959
 ```
 
 **Phân tích:**
-- ❌ **Kết quả sai hoàn toàn** - Không có từ nào liên quan đến technology/computing
-- ❌ **Score cực kỳ cao** (>0.995) - Dấu hiệu overfitting nghiêm trọng
-- ❌ **Từ hoàn toàn ngẫu nhiên:**
+- **Kết quả sai hoàn toàn** - Không có từ nào liên quan đến technology/computing
+- **Score cực kỳ cao** (>0.995) - Dấu hiệu overfitting nghiêm trọng
+- **Từ hoàn toàn ngẫu nhiên:**
   - `grow` (động từ: phát triển) - không liên quan
   - `extra` (tính từ: thêm) - không liên quan
   - `organization` (danh từ: tổ chức) - không liên quan
@@ -359,7 +358,7 @@ raise          0.9959
    - Window size và epochs có thể chưa tối ưu
 ```
 
-**Đánh giá:** ❌ **Very Poor - Model hoàn toàn không sử dụng được**
+**Đánh giá:**Very Poor - Model hoàn toàn không sử dụng được**
 
 #### 2.2. Kết Quả Word Analogy
 **Test:** king - man + woman = ?  
@@ -375,14 +374,14 @@ setoff     0.9892
 ```
 
 **Phân tích:**
-- ❌ **Thất bại hoàn toàn** - Không có "queen" trong top 5
-- ❌ **Từ vô nghĩa:**
+- **Thất bại hoàn toàn** - Không có "queen" trong top 5
+- **Từ vô nghĩa:**
   - `tumor` (khối u) - không liên quan royalty hay gender
   - `attach` (gắn vào) - động từ ngẫu nhiên
   - `golf` (môn thể thao) - hoàn toàn xa lạ
   - `fostering` (nuôi dưỡng) - không liên quan
   - `setoff` (khởi hành) - vô nghĩa
-- ❌ **Không học được:**
+- **Không học được:**
   - Gender relationship (male ↔ female)
   - Semantic parallelism (king:queen :: man:woman)
   - Word analogies require deep semantic understanding
@@ -390,10 +389,10 @@ setoff     0.9892
 **So sánh với GloVe:**
 ```
 GloVe Model:
-  king - man + woman = queen ✅ (correct)
+  king - man + woman = queen (correct)
   
 Custom Model:
-  king - man + woman = tumor ❌ (nonsense)
+  king - man + woman = tumor (nonsense)
 ```
 
 **Lý do thất bại:**
@@ -406,45 +405,45 @@ Custom Model:
 - 14K câu hoàn toàn không đủ
 ---
 
-### 3. 📊 Task 4: Phân tích Spark Word2Vec trên C4 Dataset
+### 3. Task 4: Phân tích Spark Word2Vec trên C4 Dataset
 **Kết quả:**
 ```
-1. desktop      0.6746  ✅
-2. computers    0.6737  ✅
-3. software     0.6619  ✅
-4. smartphone   0.6585  ✅
-5. laptop       0.6328  ✅
+1. desktop      0.6746  
+2. computers    0.6737  
+3. software     0.6619  
+4. smartphone   0.6585  
+5. laptop       0.6328  
 ```
 
 **Phân tích chi tiết:**
 **Từ 1-2: Hardware devices (0.67-0.67)**
 - `desktop`, `laptop` - Cùng category với computer
-- 📝 **Giải thích:** C4 dataset có nhiều tech content
-- ✅ **Đánh giá:** Excellent match
+- **Giải thích:** C4 dataset có nhiều tech content
+- **Đánh giá:** Excellent match
 
 **Từ 3: Software (0.66)**
 - `software` - Direct relationship
-- ✅ **Đánh giá:** Perfect
+- **Đánh giá:** Perfect
 
 **Từ 4: Mobile device (0.65)**
 - `smartphone` - Modern computing device
-- ✅ **Đánh giá:** Very relevant
+- **Đánh giá:** Very relevant
 
 **Từ 5: Portable computer (0.63)**
 - `laptop` - Computing device
-- ✅ **Đánh giá:** Excellent
+- **Đánh giá:** Excellent
 
 **So sánh với GloVe:**
 **Nhận xét:**
-- ✅ **Kết quả tốt** - Tất cả 5 từ đều relevant
-- ✅ **Better than Task 3** - C4 dataset lớn hơn UD nhiều
-- ⚠️ **Thấp hơn GloVe** - Score 0.63-0.67 vs 0.78-0.91
-- 📝 **Lý do:** C4 dataset vẫn nhỏ hơn Wikipedia + Gigaword
+- **Kết quả tốt** - Tất cả 5 từ đều relevant
+- **Better than Task 3** - C4 dataset lớn hơn UD nhiều
+- **Thấp hơn GloVe** - Score 0.63-0.67 vs 0.78-0.91
+- **Lý do:** C4 dataset vẫn nhỏ hơn Wikipedia + Gigaword
 
 **Đánh giá:** (Very Good - Production ready cho domain-specific tasks)
 
 ---
-### 4. 🎨 Task 5: Phân tích Visualization
+### 4. Task 5: Phân tích Visualization
 #### 4.1. Biểu đồ (image.png) 2D PCA vs t-SNE
 **Đánh giá:**
 ```
@@ -490,48 +489,48 @@ sys.path.insert(0, workspace_root)
 3. Nếu lỗi, thử: `pip install pyspark --user`
 ---
 
-## 🎓 Kết luận
+## Kết luận
 ### Tóm tắt Lab 4
 Lab này đã giúp chúng ta hiểu sâu về **Word Embeddings** - một kỹ thuật quan trọng trong NLP:
 **Những gì đã học được:**
-1. ✅ **Pre-trained Models (GloVe)**
+1. **Pre-trained Models (GloVe)**
    - Tiện lợi, chất lượng cao, không cần training
    - Phù hợp cho hầu hết các task NLP tổng quát
    - Vocabulary lớn (400K từ), coverage tốt
 
-2. ✅ **Custom Training với Word2Vec**
+2. **Custom Training với Word2Vec**
    - Cần dataset lớn (millions tokens) để có kết quả tốt
    - Phù hợp cho domain-specific applications
    - Cho phép control hyperparameters
 
-3. ✅ **Spark MLlib cho Big Data**
+3. **Spark MLlib cho Big Data**
    - Xử lý distributed training trên dữ liệu lớn
    - Scalable và hiệu quả
    - Kết quả tốt với C4 dataset
 
-4. ✅ **Visualization với PCA/t-SNE**
+4. **Visualization với PCA/t-SNE**
    - PCA: Fast, linear, good for overview
    - t-SNE: Slow, non-linear, excellent for detailed analysis
    - Giúp hiểu semantic relationships giữa các từ
 
-5. ✅ **Practical Applications**
+5. **Practical Applications**
    - Document embedding
    - Similarity computation
    - Word analogies
    - Semantic clustering
 
 **Bài học quan trọng:**
-- 📚 **Data size matters**: 200K tokens → poor, 6B tokens → excellent
-- 🎯 **Pre-trained > Custom** cho general tasks
-- 🔧 **Visualization helps** validate model quality
-- ⚙️ **Domain-specific** training có giá trị khi có large corpus
-- 🚀 **Spark** enables large-scale training
+- **Data size matters**: 200K tokens → poor, 6B tokens → excellent
+- **Pre-trained > Custom** cho general tasks
+- **Visualization helps** validate model quality
+- **Domain-specific** training có giá trị khi có large corpus
+- **Spark** enables large-scale training
 
 **Khuyến nghị thực tế:**
-- 🎯 Dùng **GloVe pre-trained** cho hầu hết các task
-- 🎯 Chỉ train custom khi có **dataset lớn** (millions tokens) và domain-specific
-- 🎯 Dùng **Spark Word2Vec** khi data > 1GB
-- 🎯 Luôn **visualize embeddings** để kiểm tra quality
-- 🎯 **Document embedding**: Remove stop words, consider weighted average
-- 🎯 Upgrade lên **BERT/Transformers** cho advanced tasks
+- Dùng **GloVe pre-trained** cho hầu hết các task
+- Chỉ train custom khi có **dataset lớn** (millions tokens) và domain-specific
+- Dùng **Spark Word2Vec** khi data > 1GB
+- Luôn **visualize embeddings** để kiểm tra quality
+- **Document embedding**: Remove stop words, consider weighted average
+- Upgrade lên **BERT/Transformers** cho advanced tasks
 

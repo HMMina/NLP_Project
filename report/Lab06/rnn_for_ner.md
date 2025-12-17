@@ -65,15 +65,15 @@ pip install torch datasets numpy
 
 ### 2.2 Cấu Trúc Thư Mục
 ```
-Lab06/
-├── lab6_rnn_for_ner.ipynb
-├── rnn_for_ner.md
+ notebook/
+    Lab06/
+       lab6_rnn_for_ner.ipynb
 ```
 
 ### 2.3 Cách Chạy
 1. **Mở Jupyter Notebook**:
    ```bash
-   jupyter notebook lab6_rnn_for_ner.ipynb
+   jupyter notebook notebook/Lab06/lab6_rnn_for_ner.ipynb
    ```
 2. **Chạy tuần tự các cell**:
    - Cell 1-2: Import thư viện và setup seed.

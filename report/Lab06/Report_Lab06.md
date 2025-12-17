@@ -97,19 +97,20 @@ pip install pandas numpy scikit-learn gensim tensorflow jupyter
 
 #### 2.2 Cấu Trúc Thư Mục
 ```
-Lab06/
-├── lab6_rnns_text_classification.ipynb
-├── hwu/
-│   ├── train.csv
-│   ├── val.csv
-│   └── test.csv
-└── rnns_text_classification.md
+ notebook/
+    Lab06/
+       lab6_rnns_text_classification.ipynb
+ data/
+    hwu/
+       train.csv
+       val.csv
+       test.csv
 ```
 
 #### 2.3 Cách Chạy
 1. **Mở Jupyter Notebook**:
    ```bash
-   jupyter notebook lab6_rnns_text_classification.ipynb
+   jupyter notebook notebook/Lab06/lab6_rnns_text_classification.ipynb
    ```
 
 2. **Chạy từng cell theo thứ tự**:
@@ -282,18 +283,19 @@ pip install torch numpy
 
 #### 2.2 Cấu Trúc Thư Mục
 ```
-Lab06/
-├── lab6_rnn_for_pos_tagging.ipynb
-├── rnn_for_pos_tagging.md
-└── ../UD_English-EWT/
-    ├── en_ewt-ud-train.conllu
-    └── en_ewt-ud-dev.conllu
+ notebook/
+    Lab06/
+       lab6_rnn_for_pos_tagging.ipynb
+ data/
+    UD_English-EWT/
+       en_ewt-ud-train.conllu
+       en_ewt-ud-dev.conllu
 ```
 
 #### 2.3 Cách Chạy
 1. **Mở Jupyter Notebook**:
    ```bash
-   jupyter notebook lab6_rnn_for_pos_tagging.ipynb
+   jupyter notebook notebook/Lab06/lab6_rnn_for_pos_tagging.ipynb
    ```
 2. **Chạy tuần tự các cell**:
    - Cell 1-2: Import và setup.
@@ -438,15 +440,15 @@ pip install torch datasets numpy
 
 #### 2.2 Cấu Trúc Thư Mục
 ```
-Lab06/
-├── lab6_rnn_for_ner.ipynb
-├── rnn_for_ner.md
+ notebook/
+    Lab06/
+       lab6_rnn_for_ner.ipynb
 ```
 
 #### 2.3 Cách Chạy
 1. **Mở Jupyter Notebook**:
    ```bash
-   jupyter notebook lab6_rnn_for_ner.ipynb
+   jupyter notebook notebook/Lab06/lab6_rnn_for_ner.ipynb
    ```
 2. **Chạy tuần tự các cell**:
    - Cell 1-2: Import thư viện và setup seed.

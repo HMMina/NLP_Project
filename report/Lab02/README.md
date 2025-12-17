@@ -1,4 +1,21 @@
 # Báo Cáo Lab: Enhanced Spark NLP Pipeline với TF-IDF và Document Similarity
+
+## Cấu trúc dự án
+```
+ src/
+    Lab02/
+       spark_labs/
+          src/
+             main/
+                scala/
+                   com/
+                      HMina/
+                         spark/
+                            Lab17_NLPPipeline.scala   # Main Spark Application
+ data/
+    c4-train.00000-of-01024-30K.json                  # Dữ liệu huấn luyện
+```
+
 ## Các Bước Triển Khai
 
 ### 1. Thiết Lập Môi Trường
@@ -8,10 +25,10 @@
 - **Phiên bản SBT**: 1.11.0
 
 ### 2. Enhanced Features (New Enhancements)
-- **✅ Customizable Document Limit**: Variable `limitDocuments` để dễ dàng thay đổi số lượng documents
-- **✅ Detailed Performance Measurement**: Đo thời gian thực thi từng stage chính
-- **✅ Vector Normalization**: Normalizer layer để chuẩn hóa TF-IDF vectors  
-- **✅ Document Similarity Analysis**: Tìm top 5 documents tương tự nhất sử dụng cosine similarity
+- **Customizable Document Limit**: Variable `limitDocuments` để dễ dàng thay đổi số lượng documents
+- **Detailed Performance Measurement**: Đo thời gian thực thi từng stage chính
+- **Vector Normalization**: Normalizer layer để chuẩn hóa TF-IDF vectors  
+- **Document Similarity Analysis**: Tìm top 5 documents tương tự nhất sử dụng cosine similarity
 
 ### 3. Tải Dữ Liệu
 ```scala
@@ -91,7 +108,7 @@ val enhancedResult = enhancedModel.transform(textDF)
 ### Các Bước Thực Thi
 ```bash
 # Di chuyển đến thư mục dự án
-cd C:\Users\ADMIN\.vscode\NLP_APP\Lab02\spark_labs
+cd src/Lab02/spark_labs
 
 # Tạo các thư mục cần thiết
 mkdir log, results
@@ -329,10 +346,10 @@ Thiết kế **Dual Pipeline** cho phép dễ dàng A/B testing các kỹ thuậ
 ## Kết Luận
 
 Spark NLP pipeline đã triển khai thành công tất cả các thành phần yêu cầu:
-- ✅ Nhập dữ liệu từ bộ dữ liệu C4
-- ✅ Tiền xử lý văn bản với tokenization và loại bỏ từ dừng
-- ✅ Vector hóa TF-IDF cho biểu diễn số
-- ✅ L2 normalization cho vector đặc trưng
-- ✅ Phân tích độ tương tự văn bản với cosine similarity
-- ✅ Logging toàn diện và lưu trữ kết quả
-- ✅ Xử lý lỗi và quản lý tài nguyên
+- Nhập dữ liệu từ bộ dữ liệu C4
+- Tiền xử lý văn bản với tokenization và loại bỏ từ dừng
+- Vector hóa TF-IDF cho biểu diễn số
+- L2 normalization cho vector đặc trưng
+- Phân tích độ tương tự văn bản với cosine similarity
+- Logging toàn diện và lưu trữ kết quả
+- Xử lý lỗi và quản lý tài nguyên

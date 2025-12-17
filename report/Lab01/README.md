@@ -1,40 +1,44 @@
 ﻿# NLP_APP_Lab1
 ## Cấu trúc dự án
 ```
- Lab1/
-    src/
-       core/
-          interfaces.py         # Định nghĩa các interface Tokenizer và Vectorizer
-          dataset_loaders.py    # Loader cho dữ liệu UD_English-EWT
-       preprocessing/
-          simple_tokenizer.py   # Tokenizer đơn giản
-          regex_tokenizer.py    # Tokenizer sử dụng regex
-       representations/
-           count_vectorizer.py   # Vector hóa văn bản
-    test/
-        lab1_test.py              # Test cho Lab 1
-        lab2_test.py              # Test cho Lab 2
- UD_English-EWT/                   # Dữ liệu tiếng Anh
+ src/
+    Lab01/
+       src/
+          core/
+             interfaces.py         # Định nghĩa các interface Tokenizer và Vectorizer
+             dataset_loaders.py    # Loader cho dữ liệu UD_English-EWT
+          preprocessing/
+             simple_tokenizer.py   # Tokenizer đơn giản
+             regex_tokenizer.py    # Tokenizer sử dụng regex
+          representations/
+              count_vectorizer.py   # Vector hóa văn bản
+ test/
+    Lab01/
+       test/
+           lab1_test.py              # Test cho Lab 1
+           lab2_test.py              # Test cho Lab 2
+ data/
+    UD_English-EWT/                   # Dữ liệu tiếng Anh
 ```
 
 ## Lab 1: Tokenization
 Lab 1 tập trung vào việc xây dựng các phương pháp tokenizer khác nhau để phân tách văn bản thành các token riêng lẻ:
 
 ### 1. Xây dựng interface
-- Interface `Tokenizer` trong `src/core/interfaces.py` định nghĩa phương thức `tokenize` để phân tách văn bản
+- Interface `Tokenizer` trong `src/Lab01/src/core/interfaces.py` định nghĩa phương thức `tokenize` để phân tách văn bản
 
 ### 2. Cài đặt các tokenizer
-- **SimpleTokenizer** trong `src/preprocessing/simple_tokenizer.py` sử dụng phương pháp đơn giản dựa trên việc thêm khoảng trắng vào trước và sau kí tự đặc biệt, sau đó phân tách văn bản dựa trên khoảng trắng.
-- **RegexTokenizer** trong `src/preprocessing/regex_tokenizer.py` sử dụng biểu thức chính quy để lọc ra các token dựa trên mẫu `\w+|[^\w\s]`, giúp nhận diện từ và ký tự đặc biệt.
+- **SimpleTokenizer** trong `src/Lab01/src/preprocessing/simple_tokenizer.py` sử dụng phương pháp đơn giản dựa trên việc thêm khoảng trắng vào trước và sau kí tự đặc biệt, sau đó phân tách văn bản dựa trên khoảng trắng.
+- **RegexTokenizer** trong `src/Lab01/src/preprocessing/regex_tokenizer.py` sử dụng biểu thức chính quy để lọc ra các token dựa trên mẫu `\w+|[^\w\s]`, giúp nhận diện từ và ký tự đặc biệt.
 
 
 ## Lab 2: Vector hóa văn bản (Count Vectorizer)
 Lab 2 tập trung vào việc vector hóa văn bản sử dụng kỹ thuật Count Vectorizer:
 ### 1. Xây dựng interface
-- Interface `Vectorizer` trong `src/core/interfaces.py` định nghĩa các phương thức cần thiết
+- Interface `Vectorizer` trong `src/Lab01/src/core/interfaces.py` định nghĩa các phương thức cần thiết
 
 ### 2. Cài đặt Count Vectorizer
-- `CountVectorizer` trong `src/representations/count_vectorizer.py` khởi tạo từ điển từ tập hợp các token
+- `CountVectorizer` trong `src/Lab01/src/representations/count_vectorizer.py` khởi tạo từ điển từ tập hợp các token
 - Chuyển đổi văn bản thành vector đặc trưng dựa trên tần suất xuất hiện của các token
 
 ## Cách chạy code
@@ -45,8 +49,8 @@ pip install -r requirements.txt
 ```
 
 ### Chạy các file test trong VSCode (chạy trực tiếp trong IDE)
-- Mở file `lab1_test.py` trong thư mục `test/` và chạy để kiểm tra Tokenizers
-- Mở file `lab2_test.py` trong thư mục `test/` và chạy để kiểm tra Count Vectorizer
+- Mở file `lab1_test.py` trong thư mục `test/Lab01/test/` và chạy để kiểm tra Tokenizers
+- Mở file `lab2_test.py` trong thư mục `test/Lab01/test/` và chạy để kiểm tra Count Vectorizer
 
 ## Log kết quả
 ### Lab 1: Kết quả Tokenization

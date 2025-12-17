@@ -1,5 +1,23 @@
 # Lab 05
 
+## Cấu trúc dự án
+```
+ src/
+    Lab05/
+       src/
+          models/
+             text_classifier.py      # Class TextClassifier
+          representations/
+             tfidf_vectorizer.py     # TF-IDF Vectorizer
+ test/
+    Lab05/
+       test/
+          lab5_test.py                    # Test cơ bản
+          lab5_spark_sentiment_analysis.py # Spark Pipeline
+          lab5_improvement_test.py        # Thí nghiệm cải thiện
+ data/
+    sentiments.csv                        # Dữ liệu phân tích cảm xúc
+```
 
 ## Báo cáo và Phân tích 
 
@@ -174,7 +192,7 @@ pip install pyspark
 ```
 
 **Thiết lập Dataset:**
-Đảm bảo `sentiments.csv` tồn tại tại `C:\Users\ADMIN\.vscode\NLP_APP\sentiments.csv` với định dạng:
+Đảm bảo `sentiments.csv` tồn tại tại `data/sentiments.csv` với định dạng:
 ```
 text,sentiment
 "This is great!",1
@@ -184,7 +202,7 @@ text,sentiment
 ### 2.2 Chạy các thí nghiệm
 **Di chuyển đến thư mục Test:**
 ```bash
-cd C:\Users\ADMIN\.vscode\NLP_APP\Lab05\test
+cd test/Lab05/test
 ```
 
 #### Test 1: Phân loại văn bản cơ bản (Task 1 & 2)
